@@ -18,5 +18,31 @@
         "scripts": [
             "background.js"
         ]
+    },
+    "commands": {
+        "detach-this-tab": {
+            "suggested_key": {
+                "default": "Ctrl+Space"
+            },
+            "description": "__MSG_detach-this-tab-key-shortcut__"
+        },
+        "detach-to-the-right": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Space"
+            },
+            "description": "__MSG_detach-to-the-right-key-shortcut__"
+        },
+        "detach-same-origin": {
+            "suggested_key": {
+                "default": "Ctrl+Alt+L"
+            },
+            "description": "__MSG_detach-same-origin-key-shortcut__"
+        },
+        "detach-same-origin-across-windows": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L"
+            },
+            "description": "__MSG_detach-same-origin-across-windows-key-shortcut__"
+        }
     }
 }

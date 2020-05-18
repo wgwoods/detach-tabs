@@ -18,5 +18,21 @@
     "detach-same-origin-across-windows": {
         "message": "All Tabs from This Origin across All Windows",
         "description": "Tab context menu item."
+    },
+    "detach-this-tab-key-shortcut": {
+        "message": "Move the current tab to a new window",
+        "description": "Keyboard shortcut label for detach-this-tab"
+    },
+    "detach-to-the-right-key-shortcut": {
+        "message": "Detach current tab and all tabs to the right",
+        "description": "Keyboard shortcut label for detach-to-the-right"
+    },
+    "detach-same-origin-key-shortcut": {
+        "message": "Detach all tabs with the same origin from this window",
+        "description": "Keyboard shortcut label for detach-same-origin"
+    },
+    "detach-same-origin-across-windows-key-shortcut": {
+        "message": "Detach all tabs with the same origin from all windows",
+        "description": "Keyboard shortcut label for detach-same-origin-across-windows"
     }
 }

@@ -19,6 +19,22 @@ browser.contextMenus.create({
     onclick: detach_tabs_same_origin_across_windows
 });
 
+browser.commands.onCommand.addListener(async function (command) {
+    const active_tabs = await browser.tabs.query({ currentWindow: true, active: true });
+    const tab = active_tabs[0];
+    if (command === "detach-to-the-right") {
+        detach_tabs_to_the_right(undefined, tab);
+    } else if (command === "detach-same-origin") {
+        detach_tabs_same_origin(undefined, tab);
+    } else if (command === "detach-same-origin-across-windows") {
+        detach_tabs_same_origin_across_windows(undefined, tab);
+    } else if (command === "detach-this-tab") {
+        detach_this_tab(tab);
+    } else {
+        console.error(`detach-tabs: unknown command '${command}'`);
+    }
+});
+
 function byIndex(a, b) {
     return a.index - b.index;
 }
@@ -28,6 +44,15 @@ async function detach_tabs(tabs) {
     const tab1 = tabs.shift();
     const window = await browser.windows.create({ tabId: tab1.id });
     await browser.tabs.move(tabs.map(t => t.id), { windowId: window.id, index: 1 });
+}
+
+async function detach_this_tab(tab) {
+    const current_tabs = await browser.tabs.query({ currentWindow: true });
+    if (current_tabs.length == 1) {
+        console.debug("detach_this_tab: this is the only tab; not moving");
+        return;
+    }
+    await detach_tabs([tab]);
 }
 
 async function detach_tabs_to_the_right(_, tab) {
