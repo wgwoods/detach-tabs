@@ -19,7 +19,7 @@ browser.contextMenus.create({
     onclick: detach_tabs_same_origin_across_windows
 });
 
-browser.commands.onCommand.addListener(async function (command) {
+browser.commands.onCommand.addListener(async (command) => {
     const active_tabs = await browser.tabs.query({ currentWindow: true, active: true });
     const tab = active_tabs[0];
     if (command === "detach-to-the-right") {
@@ -33,6 +33,11 @@ browser.commands.onCommand.addListener(async function (command) {
     } else {
         console.error(`detach-tabs: unknown command '${command}'`);
     }
+});
+
+browser.contextMenus.onShown.addListener((info, tab) => {
+    browser.contextMenus.update("detach-tabs-to-the-right", {enabled: (tab.index > 0)});
+    browser.contextMenus.refresh();
 });
 
 function byIndex(a, b) {
