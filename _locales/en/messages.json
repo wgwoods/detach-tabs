@@ -15,12 +15,12 @@
         "message": "This tab + tabs to the right",
         "description": "pop-tabs-to-the-right menu item"
     },
-    "pop-this-tab-key-shortcut": {
+    "poptabs_this_command": {
         "message": "Pop active tab into a new window",
         "description": "Keyboard shortcut label for pop-this-tab"
     },
-    "pop-tabs-to-the-right-key-shortcut": {
-        "message": "Pop active tab + tabs to its right into a new window",
+    "poptabs_right_command": {
+        "message": "Pop active tab + tabs to right into a new window",
         "description": "Keyboard shortcut label for pop-tabs-to-the-right"
     }
 }

@@ -23,13 +23,13 @@
             "suggested_key": {
                 "default": "Ctrl+Space"
             },
-            "description": "__MSG_pop-this-tab-key-shortcut__"
+            "description": "__MSG_poptabs_this_command__"
         },
         "pop-tabs-to-the-right": {
             "suggested_key": {
                 "default": "Ctrl+Shift+Space"
             },
-            "description": "__MSG_pop-tabs-to-the-right-key-shortcut__"
+            "description": "__MSG_poptabs_right_command__"
         }
     }
 }
