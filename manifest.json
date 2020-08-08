@@ -1,13 +1,12 @@
 {
     "manifest_version": 2,
     "name": "__MSG_name__",
-    "version": "0.0.6",
+    "version": "0.0.1",
     "description": "__MSG_description__",
-    "author": "Staś Małolepszy",
-    "homepage_url": "https://github.com/stasm/detach-tabs",
+    "author": "Will Woods",
+    "homepage_url": "https://github.com/wgwoods/firefox-poptabs",
     "permissions": [
-        "contextMenus",
-        "tabs"
+        "menus"
     ],
     "default_locale": "en",
     "icons": {
@@ -20,29 +19,17 @@
         ]
     },
     "commands": {
-        "detach-this-tab": {
+        "pop-this-tab": {
             "suggested_key": {
                 "default": "Ctrl+Space"
             },
-            "description": "__MSG_detach-this-tab-key-shortcut__"
+            "description": "__MSG_pop-this-tab-key-shortcut__"
         },
-        "detach-to-the-right": {
+        "pop-tabs-to-the-right": {
             "suggested_key": {
                 "default": "Ctrl+Shift+Space"
             },
-            "description": "__MSG_detach-to-the-right-key-shortcut__"
-        },
-        "detach-same-origin": {
-            "suggested_key": {
-                "default": "Ctrl+Alt+L"
-            },
-            "description": "__MSG_detach-same-origin-key-shortcut__"
-        },
-        "detach-same-origin-across-windows": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+L"
-            },
-            "description": "__MSG_detach-same-origin-across-windows-key-shortcut__"
+            "description": "__MSG_pop-tabs-to-the-right-key-shortcut__"
         }
     }
 }

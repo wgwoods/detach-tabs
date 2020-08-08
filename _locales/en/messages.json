@@ -1,38 +1,26 @@
 {
     "name": {
-        "message": "Detach Tabs",
+        "message": "Poptabs",
         "description": "Name of this extension."
     },
     "description": {
-        "message": "Move multiple tabs into a new window.",
+        "message": "Simple shortcuts for moving tabs to new windows",
         "description": "Description of this extension."
     },
-    "detach-to-the-right": {
-        "message": "This Tab and Tabs to the Right",
-        "description": "Tab context menu item."
+    "pop-this-tab": {
+        "message": "This tab",
+        "description": "pop-this-tab menu item"
     },
-    "detach-same-origin": {
-        "message": "All Tabs from This Origin",
-        "description": "Tab context menu item."
+    "pop-tabs-to-the-right": {
+        "message": "This tab + tabs to the right",
+        "description": "pop-tabs-to-the-right menu item"
     },
-    "detach-same-origin-across-windows": {
-        "message": "All Tabs from This Origin across All Windows",
-        "description": "Tab context menu item."
+    "pop-this-tab-key-shortcut": {
+        "message": "Pop active tab into a new window",
+        "description": "Keyboard shortcut label for pop-this-tab"
     },
-    "detach-this-tab-key-shortcut": {
-        "message": "Move the current tab to a new window",
-        "description": "Keyboard shortcut label for detach-this-tab"
-    },
-    "detach-to-the-right-key-shortcut": {
-        "message": "Detach current tab and all tabs to the right",
-        "description": "Keyboard shortcut label for detach-to-the-right"
-    },
-    "detach-same-origin-key-shortcut": {
-        "message": "Detach all tabs with the same origin from this window",
-        "description": "Keyboard shortcut label for detach-same-origin"
-    },
-    "detach-same-origin-across-windows-key-shortcut": {
-        "message": "Detach all tabs with the same origin from all windows",
-        "description": "Keyboard shortcut label for detach-same-origin-across-windows"
+    "pop-tabs-to-the-right-key-shortcut": {
+        "message": "Pop active tab + tabs to its right into a new window",
+        "description": "Keyboard shortcut label for pop-tabs-to-the-right"
     }
 }
