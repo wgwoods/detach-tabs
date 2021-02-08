@@ -24,13 +24,13 @@ browser.menus.create({
  *   useless if no other tabs -> enabled if there's more than 1 tab
  * pop-tabs-to-the-right:
  *   useless for leftmost tab -> enabled if tab's index is > 0
+ *   redundant for rightmost tab -> enabled if tab's index is < (length-1)
  * pop-highlighted-tabs:
- *   shown only if multiple tabs highlighted
+ *   useless if no tabs are highlighted -> enabled if hl_tabs.length >= 1
  *   useless if all tabs are highlighted -> enabled if hl_tabs.length < cur
  */
 var poptabs_next_menuid = 1; // A unique ID for the next menu instance
 var poptabs_last_menuid = 0; // ID of the most recently-shown menu instance
-
 browser.menus.onShown.addListener(async (info, tab) => {
     // Take next_menuid for the current instance; post-increment next_menuid
     var menuid = poptabs_next_menuid++;
@@ -47,7 +47,7 @@ browser.menus.onShown.addListener(async (info, tab) => {
     browser.menus.update("pop-tabs-to-the-right",
         { enabled: ((tab.index > 0) && (tab.index < win_tabs.length-1)) });
     browser.menus.update("pop-highlighted-tabs",
-        { enabled: ((hl_tabs.length > 1) && (hl_tabs.length < win_tabs.length)) });
+        { enabled: ((hl_tabs.length >= 1) && (hl_tabs.length < win_tabs.length)) });
     browser.menus.refresh();
 });
 
@@ -58,14 +58,30 @@ async function get_current_tab() {
                        .then(matched_tabs => matched_tabs[0]);
 }
 
-/* Set up keyboard command shortcut listeners. */
+/* Set up keyboard command listener(s).
+ *
+ * IMHO it makes sense to have the "pop-this-tab" keyboard command actually pop
+ * all highlighted tabs - the active tab is (AFAICT) always highlighted, and I
+ * can't think of any case where a user would highlight multiple tabs, and then
+ * want to *only* pop the active one. (Good thing, too, because I really can't
+ * seem to find a third usable keyboard shortcut for "pop-highlighted-tabs".
+ *
+ * Still, there might be a use case (or user preference?) for this to be a "pop
+ * active tab only" shortcut, so I'm going to leave this variable in place to
+ * switch behavior if needed.
+ */
+var pop_this_tab_pops_highlighted = true;
+
 browser.commands.onCommand.addListener(async (command) => {
+    if ((pop_this_tab_pops_highlighted) && (command === "pop-this-tab")) {
+        command = "pop-highlighted-tabs";
+    }
     if (command === "pop-this-tab") {
         pop_this_tab(await get_current_tab());
     } else if (command === "pop-tabs-to-the-right") {
         pop_tabs_to_the_right(await get_current_tab());
     } else if (command === "pop-highlighted-tabs") {
-        pop_highlighted_tabs(await get_current_tab().then(tab => tab.windowId))
+        pop_highlighted_tabs(await get_current_tab().then(tab => tab.windowId));
     }
 });
 
